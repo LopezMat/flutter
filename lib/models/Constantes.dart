@@ -7,6 +7,9 @@ import 'package:intro_flutter/pages/HomePage.dart';
 import 'package:intro_flutter/pages/NextPage.dart';
 import 'package:intro_flutter/widgets/HoverButton.dart';
 import 'package:intro_flutter/widgets/UrlButton.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
+
 
 //définition des couleurs
 Color appBarColor = const Color.fromRGBO(3, 169, 244, 1);
@@ -92,5 +95,13 @@ List<CarouselImage> cimages = [
   CarouselImage(name: "titi", path: p3),
   CarouselImage(name: "tintin", path: p4),
   CarouselImage(name: "tete", path: p12),
-
 ];
+
+// information de connexion
+String adminlog = "administrator";
+String admihpass = generateMd5("admin@2024");
+
+//fonction de hash en md5
+String generateMd5(String data){
+  return md5.convert(utf8.encode(data)).toString();
+}

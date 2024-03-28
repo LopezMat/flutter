@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_flutter/pages/LoginPage.dart';
 
 import 'pages/HomePage.dart';
 
@@ -14,7 +15,7 @@ class Cuisine extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Mon site de cuisine",
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
