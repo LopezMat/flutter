@@ -1,11 +1,11 @@
 {
-    "name": "intro_flutter",
-    "short_name": "intro_flutter",
+    "name": "good_meal",
+    "short_name": "good_meal",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Retauration app",
+    "description": "a restaurant app",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

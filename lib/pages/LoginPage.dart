@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intro_flutter/models/MakeItResponsive.dart';
-import 'package:intro_flutter/section/LoginSection.dart';
-import 'package:intro_flutter/widgets/PhoneBar.dart';
-import 'package:intro_flutter/widgets/WebBar.dart';
+import 'package:good_meal/sections/LoginSection.dart';
+
+import '../models/MakeItResponsive.dart';
+import '../widgets/PhoneBar.dart';
+import '../widgets/WebBar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,14 +18,14 @@ class _LoginPageState extends State<LoginPage> {
     Size size = MediaQuery.of(context).size;
     ScreenSize screenSize = MakeItResponsive().getScreenSize(context);
     return Scaffold(
-        appBar: (screenSize == ScreenSize.small) ? PhoneBar(): WebBar(size: size),
-        body:SingleChildScrollView(
-          child:Column(
-            children: [
-              LoginSection(),
-            ],
-          ),
+      appBar: ( screenSize == ScreenSize.small ) ? PhoneBar() : WebBar(size: size),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+           LoginSection(),
+          ],
         ),
+      ),
     );
   }
 }

@@ -1,23 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:intro_flutter/models/ButtonObject.dart';
-import 'package:intro_flutter/models/CarouselImage.dart';
-import 'package:intro_flutter/models/Event.dart';
-import 'package:intro_flutter/models/UrlClass.dart';
-import 'package:intro_flutter/pages/HomePage.dart';
-import 'package:intro_flutter/pages/NextPage.dart';
-import 'package:intro_flutter/widgets/HoverButton.dart';
-import 'package:intro_flutter/widgets/UrlButton.dart';
-import 'package:crypto/crypto.dart';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:good_meal/models/CarouselImage.dart';
+import 'package:good_meal/models/Event.dart';
+import 'package:good_meal/models/UrlClass.dart';
+import 'package:good_meal/pages/GibliPage.dart';
+import 'package:good_meal/pages/HomePage.dart';
+import 'package:good_meal/pages/NextPage.dart';
+import 'package:good_meal/widgets/UrlButton.dart';
 
-//définition des couleurs
-Color appBarColor = const Color.fromRGBO(3, 169, 244, 1);
+import '../widgets/HoverButton.dart';
+import 'package:good_meal/models/ButtonObject.dart';
+import 'package:crypto/crypto.dart';
+
+// définition des couleurs
+Color appBarColor = const Color.fromRGBO(3, 169, 245, 1.0);
 Color brandingColor = const Color.fromRGBO(255, 255, 255, 0.7);
 
-
-//définir les chemins d'image
-
+// définir les chemins d'images
 String p1 = "images/p1.jpg";
 String p2 = "images/p2.jpg";
 String p3 = "images/p3.jpg";
@@ -30,78 +30,90 @@ String p9 = "images/p9.jpg";
 String p10 = "images/p10.jpg";
 String p12 = "images/p12.jpg";
 
-//gestions des bouttons de menu
+// gestion des boutons de menu
 List<ButtonObject> menuButton = [
   ButtonObject(destination: HomePage(), label: "Ma cuisine"),
   ButtonObject(destination: NextPage(), label: "Mes recettes"),
-  ButtonObject(destination: HomePage(), label: "Mon Blog"),
+  ButtonObject(destination: HomePage(), label: "Blog"),
+  ButtonObject(destination: GibliPage(), label: "Gibli"),
 ];
 
 List<HoverButton> getMenuButton() => menuButton.map(
-    (btn) => HoverButton(button: btn)
+        (btn) => HoverButton(button: btn)
 ).toList();
 
-//gestion des boutons du topstack
+
+// gestion des boutons du topstack
 List<ButtonObject> containerButton = [
-  ButtonObject(destination: HomePage(), label: "Téléphone", icon : Icon(Icons.phone)),
-  ButtonObject(destination: HomePage(), label: "Mail", icon : Icon(Icons.mail)),
-  ButtonObject(destination: HomePage(), label: "Compte", icon : Icon(Icons.person)),
+  ButtonObject(destination: HomePage(), label: "Telephone", icon: Icon(Icons.phone)),
+  ButtonObject(destination: HomePage(), label: "Mail", icon: Icon(Icons.mail)),
+  ButtonObject(destination: HomePage(), label: "Visio", icon: Icon(Icons.person)),
 ];
 
-//list de composant du button
+// list de composant button pour le web
 List<HoverButton> getCardHoverButton() =>
-    containerButton.map((button) => HoverButton(button: button)).toList();
+    containerButton.map( (button) => HoverButton(button: button) ).toList();
 
-//list de composant button pour le phone
+// function getHoverButton(containerButton) {
+//   List<hoverButton> list;
+//   for(button in containerButton){
+//     list.add(HoverButton(button: button));
+//   }
+//   return list;
+// }
+
+// list de composant button pour le phone
 List<FloatingActionButton> getFloating(BuildContext context) => containerButton.map(
     (button) => FloatingActionButton(
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context){
-            return button.destination;
-          }));
-        },
+      onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return button.destination;
+        }));
+      },
       backgroundColor: appBarColor,
       heroTag: button.label,
       child: button.icon,
     )
 ).toList();
 
-//tableau event
+// tableau event
 List<Event> events = [
-  Event(name: "Goinffre 1", path: p3),
-  Event(name: "Goinffre 2", path: p4),
-  Event(name: "Goinffre 3", path: p5),
-  Event(name: "Goinffre 4", path: p10),
-  Event(name: "Goinffre 5", path: p12),
+  Event(name: "Groinffre 1", path: p3),
+  Event(name: "Groinffre 2", path: p4),
+  Event(name: "Groinffre 3", path: p5),
+  Event(name: "Groinffre 4", path: p6),
+  Event(name: "Groinffre 5", path: p7),
 ];
 
-//tableau d'url de contact
-
 List<UrlClass> networks = [
-  UrlClass(name: "Facebook", url:"https://www.facebook.com"),
-  UrlClass(name: "Instagram", url:"https://www.instagram.com"),
-  UrlClass(name: "X", url:"https://www.twitter.com"),
+  UrlClass(name: "Facebook", url: "https://www.facebook.com"),
+  UrlClass(name: "Instagram", url: "https://www.instagram.com"),
+  UrlClass(name: "X", url: "https://www.twitter.com"),
 ];
 
 List<UrlButton> getSocialButton() =>
-    networks.map((net)=> UrlButton(urlClass: net)).toList();
+    networks.map((net) => UrlButton(urlClass: net)).toList();
 
 List<CarouselImage> cimages = [
-  CarouselImage(name: "cookie", path: p6),
-  CarouselImage(name: "rex", path: p7),
-  CarouselImage(name: "tata", path: p8),
-  CarouselImage(name: "toto", path: p9),
-  CarouselImage(name: "tutu", path: p10),
-  CarouselImage(name: "titi", path: p3),
-  CarouselImage(name: "tintin", path: p4),
-  CarouselImage(name: "tete", path: p12),
+  CarouselImage(name: "Cookie", path: p6),
+  CarouselImage(name: "Rex", path: p7),
+  CarouselImage(name: "Rintintin", path: p8),
+  CarouselImage(name: "Bill", path: p9),
+  CarouselImage(name: "Medor", path: p10),
+  CarouselImage(name: "Gaston", path: p3),
+  CarouselImage(name: "Toto", path: p12),
+  CarouselImage(name: "Toto", path: p12),
+  CarouselImage(name: "Toto", path: p12),
+  CarouselImage(name: "Toto", path: p12),
+  CarouselImage(name: "Toto", path: p12),
+  CarouselImage(name: "Toto", path: p12),
 ];
 
 // information de connexion
 String adminlog = "administrator";
-String admihpass = generateMd5("admin@2024");
+String adminpass = generateMd5("admin@2024");
 
-//fonction de hash en md5
+// fonction de hash en md5
 String generateMd5(String data){
   return md5.convert(utf8.encode(data)).toString();
 }

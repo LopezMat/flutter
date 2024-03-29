@@ -1,9 +1,8 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_flutter/models/CarouselImage.dart';
-import 'package:intro_flutter/models/Constantes.dart';
-import 'package:intro_flutter/widgets/TitleText.dart';
+import 'package:good_meal/models/CarouselImage.dart';
+import 'package:good_meal/models/Constantes.dart';
+import 'package:good_meal/widgets/TitleText.dart';
 
 class CarouselSection extends StatefulWidget {
 
@@ -15,14 +14,16 @@ class CarouselSection extends StatefulWidget {
 }
 
 class _CarouselSectionState extends State<CarouselSection> {
- final CarouselController btnCarousel = CarouselController(); // création des bouton du carousel
+
+  final CarouselController btnCarousel = CarouselController(); // création des boutons du caroussel
+
   @override
   Widget build(BuildContext context) {
-    int index = widget.depthIndex; //définition de l'index de départ
+    int index = widget.depthIndex; //definition de l'index de départ
 
-    final items = cimages.map((image) => card(image)).toList(); //récupèration de l'image
+    final items = cimages.map((image) => card(image)).toList(); // récupération des images
 
-    CarouselOptions options = CarouselOptions(
+    CarouselOptions options = CarouselOptions( // parametrage du carousel
       autoPlay: true,
       aspectRatio: 16/9,
       enlargeCenterPage: true,
@@ -35,9 +36,9 @@ class _CarouselSectionState extends State<CarouselSection> {
 
     return Column(
       children: [
-        Row( //titre de section
+        Row( // titre de section
           children: [
-            TitleText(string: "Le carousel des toutous"),
+            TitleText(string: "le carousel des toutous"),
             Expanded(child: Container())
           ],
         ),
@@ -55,7 +56,7 @@ class _CarouselSectionState extends State<CarouselSection> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ...Iterable<int>.generate(cimages.length).map(
-                          (int pageIndex)=> Column(
+                          (int pageIndex) => Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               InkWell(
@@ -66,19 +67,20 @@ class _CarouselSectionState extends State<CarouselSection> {
                               ),
                               Visibility(
                                   maintainAnimation: true,
+                                  maintainSize: true,
                                   maintainState: true,
                                   visible: (index == pageIndex),
                                   child: AnimatedOpacity(
-                                   opacity: 1,
-                                   duration: Duration(milliseconds: 750),
-                                   child: Container(
-                                     height: 5,
-                                     width: 50,
-                                     decoration: BoxDecoration(
-                                       color: Colors.black12,
-                                       borderRadius: BorderRadius.circular(2.5)
-                                     ),
-                                   ), 
+                                    opacity: 1,
+                                    duration: Duration(milliseconds: 750),
+                                    child: Container(
+                                      height: 5,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black12,
+                                        borderRadius: BorderRadius.circular(2.5)
+                                      ),
+                                    ),
                                   )
                               )
                             ],
@@ -86,7 +88,7 @@ class _CarouselSectionState extends State<CarouselSection> {
                   )
                 ],
               ),
-            )
+            ),
         )
       ],
     );
@@ -107,4 +109,5 @@ class _CarouselSectionState extends State<CarouselSection> {
       ),
     );
   }
+
 }

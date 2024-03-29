@@ -1,6 +1,6 @@
-# intro_flutter
+# good_meal
 
-Retauration app
+a restaurant app
 
 ## Getting Started
 

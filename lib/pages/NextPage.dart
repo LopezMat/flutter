@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intro_flutter/models/MakeItResponsive.dart';
-import 'package:intro_flutter/section/CarouselSection.dart';
-import 'package:intro_flutter/section/ContactSection.dart';
-import 'package:intro_flutter/section/EventSection.dart';
-import 'package:intro_flutter/section/TopStack.dart';
-import 'package:intro_flutter/widgets/PhoneBar.dart';
-import 'package:intro_flutter/widgets/WebBar.dart';
+import 'package:good_meal/models/MakeItResponsive.dart';
+import 'package:good_meal/sections/CarouselSection.dart';
+import 'package:good_meal/sections/ContactSection.dart';
+import 'package:good_meal/sections/EventSection.dart';
+import 'package:good_meal/sections/TopStack.dart';
+import 'package:good_meal/widgets/PhoneBar.dart';
+import 'package:good_meal/widgets/WebBar.dart';
 
 import '../widgets/DrawerSmall.dart';
 
@@ -21,17 +21,19 @@ class _NextPageState extends State<NextPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     ScreenSize screenSize = MakeItResponsive().getScreenSize(context);
+    print(size.width);
+    print(screenSize);
     return Scaffold(
       appBar: ( screenSize == ScreenSize.small ) ? PhoneBar() : WebBar(size: size),
-      drawer: DrawerSmall(), //composant de menu pour tel
+      drawer: DrawerSmall(), // composant de menu pour tel
       body: SingleChildScrollView(
         child: Column(
           children: [
             CarouselSection(depthIndex: 3,),
-            /*Container(
-              height: 250,
-              child: Placeholder(),
-            ), */
+            // Container(
+            //   height: 150,
+            //   child: Placeholder(),
+            // ),
             ContactSection(),
             Placeholder()
           ],

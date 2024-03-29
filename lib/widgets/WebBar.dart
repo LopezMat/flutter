@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intro_flutter/models/Constantes.dart';
-import 'package:intro_flutter/widgets/Branding.dart';
+import 'package:good_meal/models/Constantes.dart';
+import 'package:good_meal/widgets/Branding.dart';
 
 class WebBar extends PreferredSize {
 
@@ -21,11 +21,11 @@ class WebBar extends PreferredSize {
               children: getMenuButton(),
             ),
           ),
-          Text("login")
+          Text('login')
         ]
-
       ),
     )
   );
+
 
 }

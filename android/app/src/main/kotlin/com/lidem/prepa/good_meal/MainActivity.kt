@@ -1,4 +1,4 @@
-package com.lidem.prepa.intro_flutter
+package com.lidem.prepa.good_meal
 
 import io.flutter.embedding.android.FlutterActivity
 
