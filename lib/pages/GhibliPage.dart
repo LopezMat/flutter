@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:good_meal/helper/HttpHelper.dart';
-import 'package:good_meal/models/Constantes.dart';
-import 'package:good_meal/models/MakeItResponsive.dart';
-import 'package:good_meal/models/Movie.dart';
-import 'package:good_meal/sections/CarouselSection.dart';
-import 'package:good_meal/sections/ContactSection.dart';
-import 'package:good_meal/sections/EventSection.dart';
-import 'package:good_meal/sections/TopStack.dart';
-import 'package:good_meal/widgets/PhoneBar.dart';
-import 'package:good_meal/widgets/WebBar.dart';
+import 'package:intro_flutter/helper/HttpHelper.dart';
+import 'package:intro_flutter/models/Constantes.dart';
+import 'package:intro_flutter/models/MakeItResponsive.dart';
+import 'package:intro_flutter/section/CarouselSection.dart';
+import 'package:intro_flutter/section/ContactSection.dart';
+import 'package:intro_flutter/section/EventSection.dart';
+import 'package:intro_flutter/section/TopStack.dart';
+import 'package:intro_flutter/widgets/PhoneBar.dart';
+import 'package:intro_flutter/widgets/WebBar.dart';
 
+import '../models/Movie.dart';
 import '../widgets/DrawerSmall.dart';
 
-class GibliPage extends StatefulWidget {
-  const GibliPage({super.key});
+class GhibliPage extends StatefulWidget {
+  const GhibliPage({super.key});
 
   @override
-  State<GibliPage> createState() => _GibliPageState();
+  State<GhibliPage> createState() => GhibliPageState();
 }
 
-class _GibliPageState extends State<GibliPage> {
+class GhibliPageState extends State<GhibliPage> {
 
   int moviesCount = 0;
   List<Movie> movies = [];
@@ -27,12 +27,12 @@ class _GibliPageState extends State<GibliPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     initialize();
   }
 
-  Future initialize() async {
+  void initialize() async {
     movies = await helper.getMovies();
     setState(() {
       moviesCount = movies.length;
@@ -44,14 +44,12 @@ class _GibliPageState extends State<GibliPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     ScreenSize screenSize = MakeItResponsive().getScreenSize(context);
-
     return Scaffold(
       appBar: ( screenSize == ScreenSize.small ) ? PhoneBar() : WebBar(size: size),
-      drawer: DrawerSmall(), // composant de menu pour tel
+      drawer: DrawerSmall(), //composant de menu pour tel
       body: ListView.builder(
-        itemCount: moviesCount,
           itemBuilder: (BuildContext context, int pos){
-            final movie = this.movies[pos];
+            final movie = movies[pos];
             return Card(
               color: appBarColor,
               elevation: 2,
@@ -59,10 +57,9 @@ class _GibliPageState extends State<GibliPage> {
                 title: Text(movie.title),
                 subtitle: Text(movie.description),
                 leading: Image.network(movie.image),
-              ),
-            );
-          }
-      )
+              )
+           );
+      })
     );
   }
 }

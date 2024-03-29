@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:good_meal/models/Constantes.dart';
-import 'package:good_meal/widgets/TitleText.dart';
+import 'package:intro_flutter/models/Constantes.dart';
+import 'package:intro_flutter/widgets/TitleText.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
 
     return Container(
@@ -16,26 +15,27 @@ class ContactSection extends StatelessWidget {
       padding: EdgeInsets.all(30),
       child: Column(
         children: [
-          Row( // titre de la section
+          Row(//titre de la section
             children: [
               TitleText(string: "Contact : "),
               Expanded(child: Container())
             ],
           ),
-          Row( // le contenue sur deux colonnes
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(//le contenue sur 2 colonnes
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, // espacement en bordure
             children: [
-              Column( // la première colonne
-                children: social(),
+              Column( //la première colone
+                children: social()
               ),
-              Column( // la deuxième colonne
+              Column( //la deuxième colone
                 children: [
-                  Text("Contactez-nous : "),
-                  TextButton(onPressed: (){}, child: Text("tel : 06.06.06.06.06")),
+                  Text("Contactez-nous"),
+                  TextButton(onPressed: (){}, child: Text("tel: 0629845953")),
                   TextButton(onPressed: (){}, child: Text("email: cfa@lidem.eu")),
                 ],
               )
             ],
+
           )
         ],
       ),
@@ -43,7 +43,7 @@ class ContactSection extends StatelessWidget {
   }
 
   List<Widget> social(){
-    List<Widget> items = [Text("Social network")];
+    List<Widget> items = [Text('Resaux sociaux')];
     items.addAll(getSocialButton());
     return items;
   }

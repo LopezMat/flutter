@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:good_meal/widgets/ContainerButton.dart';
-import 'package:good_meal/widgets/ContainerTextImage.dart';
+import 'package:intro_flutter/widgets/ContainerButton.dart';
+import 'package:intro_flutter/widgets/ContainerTextImage.dart';
 
 class TopStack extends StatelessWidget {
   const TopStack({super.key});

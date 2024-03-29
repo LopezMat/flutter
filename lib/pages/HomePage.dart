@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:good_meal/models/MakeItResponsive.dart';
-import 'package:good_meal/sections/EventSection.dart';
-import 'package:good_meal/sections/TopStack.dart';
-import 'package:good_meal/widgets/PhoneBar.dart';
-import 'package:good_meal/widgets/WebBar.dart';
+import 'package:intro_flutter/models/MakeItResponsive.dart';
+import 'package:intro_flutter/section/EventSection.dart';
+import 'package:intro_flutter/section/TopStack.dart';
+import 'package:intro_flutter/widgets/PhoneBar.dart';
+import 'package:intro_flutter/widgets/WebBar.dart';
 
 import '../widgets/DrawerSmall.dart';
 
@@ -19,11 +19,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     ScreenSize screenSize = MakeItResponsive().getScreenSize(context);
-    print(size.width);
-    print(screenSize);
     return Scaffold(
       appBar: ( screenSize == ScreenSize.small ) ? PhoneBar() : WebBar(size: size),
-      drawer: DrawerSmall(), // composant de menu pour tel
+      drawer: DrawerSmall(), //composant de menu pour tel
       body: SingleChildScrollView(
         child: Column(
           children: [

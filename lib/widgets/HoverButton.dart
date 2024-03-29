@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:good_meal/models/ButtonObject.dart';
+import '../models/ButtonObject.dart';
 
 class HoverButton extends StatefulWidget {
 
@@ -17,12 +17,12 @@ class _HoverButtonState extends State<HoverButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onHover: (hover){ // gestion du survol
+      onHover: (hover){
         setState(() {
           hoverValue = hover;
         });
       },
-      onTap: (){ // action du click
+      onTap: (){ //action du click
         Navigator.push(context, MaterialPageRoute(builder: (context){
           return widget.button.destination;
         }));

@@ -1,30 +1,27 @@
-
-
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:good_meal/models/Movie.dart';
 import 'package:http/http.dart' as http;
 
-class HttpHelper{ // helper de consomation d'api
+import 'package:intro_flutter/models/Movie.dart';
 
+class HttpHelper {
+  //une api peut avoir une clef (mais pas ici)
   final String urlKey = '';
+  //la root
   final String urlBase = "https://ghibliapi.vercel.app";
+  //la methode principale
   final String urlMethod = "/films";
 
-  Future<List<Movie>> getMovies() async { // promise pour récupere une liste de films
-    final String gibliApi = urlBase+urlMethod;
-
-    http.Response result = await http.get(Uri.parse(gibliApi));
-
-    if(result.statusCode == HttpStatus.ok){
-      final responseBody = jsonDecode(result.body).cast<Map<String,dynamic>>();
-      List<Movie> movies = responseBody.map<Movie>((i) => Movie.fromJson(i)).toList();
-      return movies;
+  Future<List<Movie>> getMovies() async {
+    final String url = urlBase + urlMethod;
+    http.Response response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body).cast<Map<String, dynamic>>();
+      return jsonResponse.map<Movie>((movie) => Movie.fromJson(movie)).toList();
     } else {
       return [];
     }
-
   }
+
 
 }

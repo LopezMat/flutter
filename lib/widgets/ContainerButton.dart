@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:good_meal/models/Constantes.dart';
-import 'package:good_meal/models/MakeItResponsive.dart';
+import 'package:intro_flutter/models/Constantes.dart';
+import 'package:intro_flutter/models/MakeItResponsive.dart';
 
 class ContainerButton extends StatelessWidget {
   const ContainerButton({super.key});
@@ -13,37 +13,38 @@ class ContainerButton extends StatelessWidget {
     return Center(
       child: Padding(
         padding: EdgeInsets.only(
-          top: (size.height / 2 ) - ( (screenSize == ScreenSize.small) ? 30 : 20),
+          top: (size.height / 2) - ((screenSize == ScreenSize.small) ? 30 : 20),
           left: size.width / 5,
           right: size.width / 5
-        ),
+        ) ,
         child: (screenSize == ScreenSize.small) ? small(context) : big(),
       ),
     );
   }
 
-  // widget interne à notre conainer button
-  // widget pour telephone
+  //widget interne a notre container button
+  //widget pour le tel
   Widget small(BuildContext context){
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: getFloating(context),
+      children: getFloating(context)
     );
   }
 
-  // widget pour le web
+  //widget pour le web
   Widget big() {
-    return Container(
-      height: 40,
-      child: Card(
-        elevation: 8,
-        color: Colors.blue,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: getCardHoverButton(),
-        ),
-      ),
-    );
+     return Container(
+       height: 40,
+       child: Card(
+         elevation: 8,
+         color: Colors.blueAccent,
+         child: Row(
+           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+           children: getCardHoverButton(),
+         ),
+       ),
+
+     );
   }
 
 }

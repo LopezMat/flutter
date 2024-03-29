@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../models/Constantes.dart';
+import 'package:intro_flutter/models/Constantes.dart';
 
 class ContainerTextImage extends StatelessWidget {
   const ContainerTextImage({super.key});
@@ -17,10 +16,10 @@ class ContainerTextImage extends StatelessWidget {
         image: DecorationImage(
           image: Image.asset(p12).image,
           fit: BoxFit.cover,
-          alignment: AlignmentDirectional.center
+          alignment: Alignment.topCenter,
         )
       ),
-      child: const Center(
+      child: Center(
         child: Padding(
           padding: EdgeInsets.only(left: 50, right: 50),
           child: Text(
